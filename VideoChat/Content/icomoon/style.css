@@ -1,0 +1,269 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'icomoon';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"]:before {
+*/
+.icon-camera:before, .icon-camera-2:before, .icon-mic:before, .icon-mic-2:before, .icon-phone-hang-up:before, .icon-phone-hang-up-2:before, .icon-call-outgoing:before, .icon-bubble-dots:before, .icon-spinner:before, .icon-cancel-circle:before, .icon-cancel-circle-2:before, .icon-checkmark-circle:before, .icon-checkmark-circle-2:before, .icon-cancel:before, .icon-spam:before, .icon-info:before, .icon-chrome:before, .icon-firefox:before, .icon-IE:before, .icon-opera:before, .icon-safari:before, .icon-IcoMoon:before, .icon-html5:before, .icon-css3:before, .icon-html5-2:before, .icon-calculate:before, .icon-calculate-2:before, .icon-support:before, .icon-phone:before, .icon-contact-add:before, .icon-contact-remove:before, .icon-contact-add-2:before, .icon-spinner-2:before, .icon-checkmark:before, .icon-checkmark-2:before, .icon-checkmark-3:before, .icon-contact-remove-2:before, .icon-call-incoming:before, .icon-phone-2:before, .icon-phone-3:before, .icon-grid:before, .icon-spinner-3:before, .icon-phone-4:before, .icon-phone-5:before, .icon-user:before, .icon-user-2:before, .icon-happy:before, .icon-happy-2:before, .icon-smiley:before, .icon-smiley-2:before, .icon-tongue:before, .icon-tongue-2:before, .icon-sad:before, .icon-sad-2:before, .icon-wink:before, .icon-wink-2:before, .icon-grin:before, .icon-grin-2:before, .icon-cool:before, .icon-cool-2:before, .icon-angry:before, .icon-angry-2:before, .icon-evil:before, .icon-evil-2:before, .icon-shocked:before, .icon-shocked-2:before, .icon-confused:before, .icon-confused-2:before, .icon-neutral:before, .icon-neutral-2:before, .icon-wondering:before, .icon-wondering-2:before, .icon-warning:before, .icon-notification:before, .icon-question:before, .icon-question-2:before, .icon-point-up:before, .icon-twitter:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-camera:before {
+	content: "\21";
+}
+.icon-camera-2:before {
+	content: "\22";
+}
+.icon-mic:before {
+	content: "\23";
+}
+.icon-mic-2:before {
+	content: "\24";
+}
+.icon-phone-hang-up:before {
+	content: "\25";
+}
+.icon-phone-hang-up-2:before {
+	content: "\26";
+}
+.icon-call-outgoing:before {
+	content: "\27";
+}
+.icon-bubble-dots:before {
+	content: "\28";
+}
+.icon-spinner:before {
+	content: "\29";
+}
+.icon-cancel-circle:before {
+	content: "\2a";
+}
+.icon-cancel-circle-2:before {
+	content: "\2b";
+}
+.icon-checkmark-circle:before {
+	content: "\2c";
+}
+.icon-checkmark-circle-2:before {
+	content: "\2d";
+}
+.icon-cancel:before {
+	content: "\2e";
+}
+.icon-spam:before {
+	content: "\2f";
+}
+.icon-info:before {
+	content: "\30";
+}
+.icon-chrome:before {
+	content: "\31";
+}
+.icon-firefox:before {
+	content: "\32";
+}
+.icon-IE:before {
+	content: "\33";
+}
+.icon-opera:before {
+	content: "\34";
+}
+.icon-safari:before {
+	content: "\35";
+}
+.icon-IcoMoon:before {
+	content: "\36";
+}
+.icon-html5:before {
+	content: "\37";
+}
+.icon-css3:before {
+	content: "\38";
+}
+.icon-html5-2:before {
+	content: "\39";
+}
+.icon-calculate:before {
+	content: "\3a";
+}
+.icon-calculate-2:before {
+	content: "\3b";
+}
+.icon-support:before {
+	content: "\3c";
+}
+.icon-phone:before {
+	content: "\3d";
+}
+.icon-contact-add:before {
+	content: "\3e";
+}
+.icon-contact-remove:before {
+	content: "\3f";
+}
+.icon-contact-add-2:before {
+	content: "\40";
+}
+.icon-spinner-2:before {
+	content: "\41";
+}
+.icon-checkmark:before {
+	content: "\42";
+}
+.icon-checkmark-2:before {
+	content: "\43";
+}
+.icon-checkmark-3:before {
+	content: "\44";
+}
+.icon-contact-remove-2:before {
+	content: "\45";
+}
+.icon-call-incoming:before {
+	content: "\46";
+}
+.icon-phone-2:before {
+	content: "\47";
+}
+.icon-phone-3:before {
+	content: "\48";
+}
+.icon-grid:before {
+	content: "\49";
+}
+.icon-spinner-3:before {
+	content: "\4a";
+}
+.icon-phone-4:before {
+	content: "\4b";
+}
+.icon-phone-5:before {
+	content: "\4c";
+}
+.icon-user:before {
+	content: "\4d";
+}
+.icon-user-2:before {
+	content: "\4e";
+}
+.icon-happy:before {
+	content: "\4f";
+}
+.icon-happy-2:before {
+	content: "\50";
+}
+.icon-smiley:before {
+	content: "\51";
+}
+.icon-smiley-2:before {
+	content: "\52";
+}
+.icon-tongue:before {
+	content: "\53";
+}
+.icon-tongue-2:before {
+	content: "\54";
+}
+.icon-sad:before {
+	content: "\55";
+}
+.icon-sad-2:before {
+	content: "\56";
+}
+.icon-wink:before {
+	content: "\57";
+}
+.icon-wink-2:before {
+	content: "\58";
+}
+.icon-grin:before {
+	content: "\59";
+}
+.icon-grin-2:before {
+	content: "\5a";
+}
+.icon-cool:before {
+	content: "\5b";
+}
+.icon-cool-2:before {
+	content: "\5c";
+}
+.icon-angry:before {
+	content: "\5d";
+}
+.icon-angry-2:before {
+	content: "\5e";
+}
+.icon-evil:before {
+	content: "\5f";
+}
+.icon-evil-2:before {
+	content: "\60";
+}
+.icon-shocked:before {
+	content: "\61";
+}
+.icon-shocked-2:before {
+	content: "\62";
+}
+.icon-confused:before {
+	content: "\63";
+}
+.icon-confused-2:before {
+	content: "\64";
+}
+.icon-neutral:before {
+	content: "\65";
+}
+.icon-neutral-2:before {
+	content: "\66";
+}
+.icon-wondering:before {
+	content: "\67";
+}
+.icon-wondering-2:before {
+	content: "\68";
+}
+.icon-warning:before {
+	content: "\69";
+}
+.icon-notification:before {
+	content: "\6a";
+}
+.icon-question:before {
+	content: "\6b";
+}
+.icon-question-2:before {
+	content: "\6c";
+}
+.icon-point-up:before {
+	content: "\6d";
+}
+.icon-twitter:before {
+	content: "\6e";
+}

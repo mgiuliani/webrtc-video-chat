@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>WebRTC Demo</title>
+    <script src="/Scripts/jquery-1.7.1.js"></script>
+    <script src="/Scripts/jquery.signalR-1.0.0-rc2.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script src="/Scripts/rtc-demo.js"></script>
+    <style>
+        .video {
+            height: 200px;
+            width: 200px;
+            border: 5px solid black;
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .video.mine {
+            border: 5px solid green;
+        }
+
+        #startBtn {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+    <body>
+        <!-- autoplay is required to start displaying the feed -->
+        <video autoplay class="video mine" id="rtcVideo"></video>
+        <button id="startBtn" disabled="disabled">Send My Video</button>
+    </body>
+</html>

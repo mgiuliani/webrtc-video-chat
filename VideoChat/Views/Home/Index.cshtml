@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "WebRTC Video Caller";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WebRTC Video Caller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Styles -->
+    <link href="/Content/icomoon/style.css" rel="stylesheet" />
+    <link href="/Content/Site.css" rel="stylesheet" />
+    <link href="/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/alertify/alertify.core.css" rel="stylesheet" />
+    <link href="/Content/alertify/alertify.default.css" rel="stylesheet" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+    <body data-bind="attr: { 'data-mode': Mode }">
+        <!-- Invalid browser alert, and reminder to enable media things -->
+        <div class="container-fluid">
+            <div class="row-fluid instructions">
+                <div class="span12">
+                    <div class="alert"><h4>Look Up!</h4> Your browser should be asking you to enable your webcam and microphone.  <strong>This site will not work until you provide access</strong>.</div>
+                </div>
+            </div>
+            <div class="row-fluid browser-warning">
+                <div class="span12">
+                    <div class="alert alert-error"><h4>Your browser does not appear to support WebRTC.</h4> Try either the <a href="https://nightly.mozilla.org/">latest Firefox nightly build</a>, or <a href="https://www.google.com/intl/en/chrome/browser/beta.html">Google Chrome Beta</a> to join the fun.</div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Bar -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="brand pull-left" href="#">WebRTC Video Caller</a>
+                    <span class="loading-indicator icon-spinner-3" data-bind="css: { on: Loading }"></span>
+                    <div class="nav-collapse collapse">
+                        <p class="navbar-text pull-right">
+                            You are <span data-bind="text: Username"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- App Area -->
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <!-- Side Bar -->
+                <div class="span3">
+                    <!-- In Call Actions -->
+                    <div class="well actions">
+                        <div class="status" data-bind="text: CallStatus"></div>
+                        <button class="btn btn-danger hangup">Hang Up</button>
+                    </div>
+                    <!-- User List -->
+                    <div class="well user-list">
+                        <ul class="nav nav-list">
+                            <li class="nav-header">Online Users <small data-bind="text: Users().length"></small></li>
+                            <!-- ko foreach: Users -->
+                            <li class="user" data-bind="attr: { 'data-cid': ConnectionId, 'title': Username }">
+                                <a href="#"> <!-- only using an a here for bootstrap styling -->
+                                    <div class="username" data-bind="text: Username"></div>
+                                    <div class="helper" data-bind="css: $parent.getUserStatus($data)"></div>
+                                </a>
+                            </li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- Videos -->
+                <div class="span9">
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <h4>You</h4>
+                            <video class="video mine cool-background" autoplay="autoplay"></video>
+                        </div>
+                        <div class="span6">
+                            <h4>Partner</h4>
+                            <video class="video partner cool-background" autoplay="autoplay"></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <hr>
+            <footer>
+                <p class="pull-left">
+                    <a href="https://github.com/mgiuliani/webrtc-video-chat/" target="_blank"><strong>GitHub</strong></a> | 
+                    <a href="http://www.webrtc.org/" target="_blank">WebRTC</a> | 
+                    <a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a> | 
+                    <a href="http://knockoutjs.com/" target="_blank">KnockoutJS</a> | 
+                    <a href="http://fabien-d.github.com/alertify.js/" target="_blank">Alertify</a> | 
+                    <a href="http://lea.verou.me/css3patterns/" target="_blank">CSS3 Patterns</a>
+                </p>
+            </footer>
+        </div>
+        
+        <!-- Libs -->
+        <script src="/Scripts/adapter.js"></script>
+        <script src="/Scripts/jquery-1.7.1.js"></script>
+        <script src="/Scripts/knockout-2.2.1.js"></script>
+        <script src="/Scripts/knockout.mapping-latest.js"></script>
+        <script src="/Scripts/alertify.min.js"></script>
+        <script src="/Content/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/Scripts/jquery.signalR-1.0.0-rc2.min.js"></script>
+        
+        <!-- SignalR Proxy -->
+        <script src="/signalr/hubs"></script>
+        
+        <!-- App JS -->
+        <script src="/Scripts/webrtcdemo/viewModel.js"></script>
+        <script src="/Scripts/webrtcdemo/connectionManager.js"></script>
+        <script src="/Scripts/webrtcdemo/app.js"></script>
+    </body>
+</html>

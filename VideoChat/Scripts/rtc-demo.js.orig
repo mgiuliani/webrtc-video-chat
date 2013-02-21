@@ -1,0 +1,104 @@
+﻿(function () {
+    var _myConnection,
+        _myMediaStream;
+
+    function _createConnection(onStreamAddedCallback) {
+        // Create a new PeerConnection
+        var connection = new webkitRTCPeerConnection(null);
+
+        // ICE Candidate Callback
+        connection.onicecandidate = function (event) {
+            if (event.candidate) {
+                hub.server.send(JSON.stringify({ "candidate": event.candidate }));
+            }
+        };
+
+        // Negotiation needed callback
+        connection.onnegotiationneeded = function () {
+            connection.createOffer(function (desc) {
+                connection.setLocalDescription(desc, function () {
+                    hub.server.send(JSON.stringify({ "sdp": connection.localDescription }));
+                });
+            });
+        };
+
+        // Stream handler
+        connection.onaddstream = onStreamAddedCallback;
+
+        return connection;
+    }
+
+    // Set Up SignalR Signaler
+    var hub = $.connection.webRtcHub;
+    $.support.cors = true;
+    $.connection.hub.url = '/signalr/hubs';
+    $.connection.hub.start({ xdomain: true }, function () {
+        console.log('connected to hub.');
+        init();
+    });
+
+    hub.client.newMessage = function (data) {
+        var message = JSON.parse(data),
+            connection = _myConnection || _createConnection(onAddStream);
+
+        if (message.sdp) {
+            connection.setRemoteDescription(new RTCSessionDescription(message.sdp), function () {
+                if (connection.remoteDescription.type == "offer") {
+                    console.log('received offer, sending response...');
+                    connection.createAnswer(function (desc) {
+                        connection.setLocalDescription(desc, function () {
+                            hub.server.send(JSON.stringify({ "sdp": connection.localDescription }));
+                        });
+                    });
+                }
+            });
+        } else if (message.candidate) {
+            console.log('adding ice candidate...');
+            connection.addIceCandidate(new RTCIceCandidate(message.candidate));
+        }
+
+        _myConnection = connection;
+    };
+
+    function onAddStream(event) {
+        console.log('Adding stream id: ' + event.stream.id);
+
+        var newVideoElement = document.createElement('video');
+        newVideoElement.className = 'video';
+        newVideoElement.src = window.webkitURL.createObjectURL(event.stream);
+        newVideoElement.autoplay = 'autoplay';
+
+        document.querySelector('body').appendChild(newVideoElement);
+    }
+
+    function init() {
+        navigator.webkitGetUserMedia(
+                {
+                    // Request Permissions
+                    video: true,
+                    audio: true
+                },
+                function (stream) { // succcess callback
+                    var videoElement = document.querySelector('.video.mine');
+
+                    _myMediaStream = stream;
+                    videoElement.src = window.webkitURL.createObjectURL(_myMediaStream);
+
+                    console.log('my stream id: ' + stream.id);
+
+                    $('#startBtn').removeAttr('disabled');
+                },
+                function (error) { // error callback
+                    alert(JSON.stringify(error));
+                }
+            );
+
+        $('#startBtn').click(function () {
+            _myConnection = _createConnection(onAddStream);
+            _myConnection.addStream(_myMediaStream);
+
+            // done being able to work
+            $('#startBtn').attr('disabled', 'disabled');
+        });
+    }
+})();
