@@ -89,10 +89,11 @@ WebRtcDemo.ConnectionManager = (function () {
                     console.log('WebRTC: received offer, sending response...');
                     _onReadyForStreamCallback(connection);
                     connection.createAnswer(function (desc) {
-                        connection.setLocalDescription(desc, function () {
-                            _signaler.sendSignal(JSON.stringify({ "sdp": connection.localDescription }), partnerClientId);
-                        });
-                    });
+                            connection.setLocalDescription(desc, function () {
+                                _signaler.sendSignal(JSON.stringify({ "sdp": connection.localDescription }), partnerClientId);
+                            });
+                    },
+                    function (error) { console.log('Error creating session description: ' + error); });
                 } else if (connection.remoteDescription.type == "answer") {
                     console.log('WebRTC: received answer');
                 }
@@ -163,7 +164,7 @@ WebRtcDemo.ConnectionManager = (function () {
                 connection.setLocalDescription(desc, function () {
                     _signaler.sendSignal(JSON.stringify({ "sdp": connection.localDescription }), partnerClientId);
                 });
-            });
+            }, function (error) { console.log('Error creating session description: ' + error); });
         };
 
     // Return our exposed API
