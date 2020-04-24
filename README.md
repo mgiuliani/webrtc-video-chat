@@ -1,6 +1,6 @@
 Please note that this project is no longer actively maintained, and many of the dependencies are far out of date, specifically around SignalR.
 
-Up to date WEBRTC documentation can be found at:
+Up to date WebRTC documentation can be found at:
 
 https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API
 
